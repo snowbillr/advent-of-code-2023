@@ -1,0 +1,22 @@
+{
+  "name": "advent-of-code-2023",
+  "version": "1.0.0",
+  "description": "",
+  "main": " ",
+  "scripts": {
+    "test": "test",
+    "start": "ts-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snowbillr/advent-of-code-2023.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snowbillr/advent-of-code-2023/issues"
+  },
+  "homepage": "https://github.com/snowbillr/advent-of-code-2023#readme",
+  "devDependencies": {
+  }
+}
