@@ -1,10 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-// const input = fs.readFileSync(path.resolve(__dirname, 'input.txt'), 'utf8').split('\n');
-const input = fs.readFileSync(path.resolve(__dirname, 'part_2_test_input.txt'), 'utf8').split('\n');
+const input = fs.readFileSync(path.resolve(__dirname, 'input.txt'), 'utf8').split('\n');
+// const input = fs.readFileSync(path.resolve(__dirname, 'part_2_test_input.txt'), 'utf8').split('\n');
 
 const NUMBER_WORDS = [
-    "zero",
     "one",
     "two",
     "three",
@@ -15,6 +14,18 @@ const NUMBER_WORDS = [
     "eight",
     "nine"
 ]
+
+const NUMBER_WORD_MAP = {
+    "one": "o1e",
+    "two": "t2o",
+    "three": "t3e",
+    "four": "f4r",
+    "five": "f5e",
+    "six": "s6x",
+    "seven": "s7n",
+    "eight": "e8t",
+    "nine": "n9e",
+}
 
 function part1() {
     const sum = input.reduce((acc, line) => {
@@ -28,22 +39,24 @@ function part1() {
 
 function part2() {
     const sum = input.reduce((acc, line) => {
-        console.log('---')
-        console.log(line)
-        let lineWithReplacedDigits = replaceNumberWords(line.toLocaleLowerCase())
-        // // need to replace first occurrence of a number word, not any occurrence: eightwothree should be 8wo3
-        // NUMBER_WORDS.forEach((word, number) => {
-        //     lineWithReplacedDigits = lineWithReplacedDigits.replaceAll(word, number)
-        // })
-        console.log(lineWithReplacedDigits)
-        const digits = lineWithReplacedDigits.replace(/[a-z]/g, '')
-        console.log(digits)
-        const number = Number(`${digits[0]}${digits[digits.length - 1]}`)
-        console.log(number)
+        const number = getFirstLastDigitNumber(line)
         return number + acc
     }, 0)
 
     console.log(sum)
+}
+
+function getFirstLastDigitNumber(str) {
+    // let lineWithReplacedDigits = replaceNumberWords(str.toLocaleLowerCase())
+    let lineWithReplacedDigits = str
+    Object.entries(NUMBER_WORD_MAP).forEach(([word, number]) => {
+        lineWithReplacedDigits = lineWithReplacedDigits.replaceAll(word, number)
+    })
+    console.log(str)
+    console.log(lineWithReplacedDigits)
+    const digits = lineWithReplacedDigits.replace(/[a-z]/g, '')
+    const number = Number(`${digits[0]}${digits[digits.length - 1]}`)
+    return number
 }
 
 function replaceNumberWords(str) {
@@ -73,6 +86,6 @@ function replaceNumberWords(str) {
 }
 
 // part1()
-// part2()
+part2()
 
-console.log(replaceNumberWords('one1'))
+// console.log(getFirstLastDigitNumber('sqmhjgzqvc3'))
