@@ -10,6 +10,13 @@ class Card {
         this.number = number;
         this.winningNumbers = winningNumbers;
         this.yourNumbers = yourNumbers;
+
+        this.matches = null;
+    }
+
+    countMatches() {
+        this.matches = this.matches || this.winningNumbers.filter(wn => this.yourNumbers.includes(wn)).length
+        return this.matches;
     }
 }
 

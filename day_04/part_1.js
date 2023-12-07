@@ -11,6 +11,6 @@ const totalScore = scores.reduce((sum, score) => sum + score, 0)
 console.log(totalScore)
 
 function calculateCardScore(card) {
-    const matchingNumbersCount = card.winningNumbers.filter(wn => card.yourNumbers.includes(wn)).length
+    const matchingNumbersCount = card.countMatches()
     return matchingNumbersCount > 0 ? 2 ** (matchingNumbersCount - 1): 0;
 }
