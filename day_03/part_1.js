@@ -46,11 +46,6 @@ const numbers = gatherSymbolAdjacentNumberCursors()
             }
         }
 
-        // if (rowSpan.size > 0) {
-        //     return rowSpan;
-        // } else {
-            // return null;
-        // }
         return rowSpan
     })
     .filter(Boolean)
