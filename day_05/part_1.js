@@ -1,8 +1,8 @@
 const readLines = require('../utils/readLines');
 const ConversionMap = require('./conversionMap');
 
-const input = readLines(__dirname, 'data/part_1_test_input.txt')
-// const input = readLines(__dirname, 'data/input.txt')
+// const input = readLines(__dirname, 'data/part_1_test_input.txt')
+const input = readLines(__dirname, 'data/input.txt')
 
 const { seeds, maps } = parseInput(input);
 
@@ -11,11 +11,8 @@ const locations = seeds.map(seed => {
         return map.conversionMap.convert(convertedSeed)
     }, seed)
 })
-console.log(locations)
 
-// just need to get the min of locations now
-
-// console.log(locations.reduce(Math.min, Infinity))
+console.log(locations.reduce((a, b) => Math.min(a, b), Infinity))
 
 function parseInput() {
     const seeds = input.splice(0, 1)[0].split(':')[1].trim().split(' ').map(n => Number(n))
